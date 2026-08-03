@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "modules/renderer.h"
+#include "includes/renderer.h"
 
 int main()
 {

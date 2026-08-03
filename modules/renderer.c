@@ -21,7 +21,8 @@ void gotoxy(int x, int y)
      printf("\033[%d;%dH", y, x * 2);
 }
 
-void renderGrid(int height, int width, char *arr, int posx, int posy)
+// TODO : modify it according to new definitions
+void renderGameArea(int height, int width, char *arr, int posx, int posy)
 {
      
      char *p = buffer;
