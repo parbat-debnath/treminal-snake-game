@@ -16,6 +16,11 @@ typedef struct node
 char demoGrid[10][10];
 char buffer[4096];
 
+void gotoxy(int x, int y)
+{
+     printf("\033[%d;%dH", y, x * 2);
+}
+
 void renderGrid(int height, int width, char *arr, int posx, int posy)
 {
      
@@ -72,11 +77,6 @@ void clearScreen()
 void hideCursor()
 {
      printf("\033[?25l");
-}
-
-void gotoxy(int x, int y)
-{
-     printf("\033[%d;%dH", y, x * 2);
 }
 
 void clearSnake(node *head)
