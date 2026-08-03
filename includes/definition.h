@@ -5,7 +5,7 @@ typedef struct node {
      char sym;
      int x, y;
      char* color;
-     node* next;
+     struct node* next;
 } node;
 
 typedef struct {
@@ -19,15 +19,16 @@ typedef struct {
      node* head;
 } snake;
 
-typedef struct gameArea
+typedef struct 
 {
      int x, y;
      int height, width;
-};
+} gameArea;
 
-
-#define HEIGHT 40
-#define WIDTH 20
+#define BOX_START_X 23
+#define BOX_START_Y 5
+#define HEIGHT 30
+#define WIDTH 30
 #define FPS 60
 #define speed 3 // cells per seconds
 #define LEFT -1

@@ -1,17 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct node
-{
-     char sym;
-     int x, y, dx, dy;
-     struct node *next;
-
-     // dx, dy -> directions 
-     // dx = +1 for right, dx = -1 for left
-     // dy = +1 for bottom, dy = -1 for up
-} node;
-
+#include "../includes/definition.h"
+#include "../includes/style.h"
 
 char demoGrid[10][10];
 char buffer[4096];
@@ -21,58 +11,59 @@ void gotoxy(int x, int y)
      printf("\033[%d;%dH", y, x * 2);
 }
 
-// TODO : modify it according to new definitions
-void renderGameArea(int height, int width, char *arr, int posx, int posy)
+gameArea g;
+
+void initGameArea(gameArea* g)
 {
-     
-     char *p = buffer;
-     p += sprintf(p, "\033[H");
+     g->height = HEIGHT;
+     g->width = WIDTH;
+     g->x = BOX_START_X;
+     g->y = BOX_START_Y;
+}
 
-     if(!arr)
-     {          
-          for(int i = 0; i < 20; i++)
-          {
-               for(int j = 0; j < 40; j++)
-               {
-                    *p++ = '.';
-                    *p++ = ' ';
-               }
+// TODO : modify it according to new definitions
+void renderGameArea()
+{
+     initGameArea(&g);
 
-               *p++ = '\n';
-          }
-
-          *p = '\0';
-
-          height = 10;
-          width = 10;
-
-          arr = &demoGrid[0][0];
-     }
-     else
+     for (int i = 0; i < g.height; i++)
      {
-          for(int i = 0; i < height; i++)
+          for (int j = 0; j < g.width; j++)
           {
-               for(int j = 0; j < width; j++)
+               gotoxy(g.x + j, g.y + i);
+               if(i == 0 || j == 0 || i == HEIGHT - 1 || j == WIDTH - 1)
                {
-                    *p++ = '.';
-                    *p++ = ' ';
+                    printf(BG_RED);
+                    printf("  ");
+                    printf(STYLE_RESET);
                }
-
-               *p++ = '\n';
+               else
+               {
+                    printf(" ");
+               }
           }
 
-          *p = '\0';
+          printf("\n");
      }
-
-     gotoxy(posx, posy);
-
-     printf("%s", buffer);
-
 }
 
 void clearScreen()
 {
      printf("\033[2J\033[H");
+}
+
+void clearGameArea() // dumped idea (not using)
+{
+     for (int i = 1; i < g.height - 1; i++)
+     {
+          for (int j = 1; j < g.width - 1; j++)
+          {
+               gotoxy(g.x + j, g.y + i);
+               printf(" ");
+          }
+          
+     }
+     
 }
 
 void hideCursor()
@@ -113,7 +104,10 @@ void renderSnake(node *head)
      while (tempNode != NULL)
      {
           gotoxy(tempNode->x, tempNode->y);
+          printf(tempNode->color);
           putchar(tempNode->sym);
+          putchar(' ');
+          printf(STYLE_RESET);
 
           tempNode = tempNode->next;
      }

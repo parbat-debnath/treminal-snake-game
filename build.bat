@@ -1,7 +1,7 @@
 @echo off
 
 echo Building...
-gcc *.c -o game.exe
+gcc main.c modules/*.c -Iincludes -o game.exe
 
 if %errorlevel% neq 0 (
     echo.
