@@ -22,7 +22,6 @@ void initGameArea(gameArea* g)
      g->y = BOX_START_Y;
 }
 
-// TODO : modify it according to new definitions
 void renderGameArea()
 {
      initGameArea(&g);
