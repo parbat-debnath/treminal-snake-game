@@ -85,7 +85,7 @@ void clearSnake(state *st)
      while (tempNode != NULL)
      {
           gotoxy((int) tempNode->x, (int) tempNode->y);
-          printf(BG_BLACK);
+          printf(STYLE_RESET);
           putchar(' ');
           putchar(' ');
           

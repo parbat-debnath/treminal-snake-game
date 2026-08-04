@@ -6,6 +6,7 @@
 #include "includes/definition.h"
 #include "includes/style.h"
 #include "includes/logic.h"
+#include "includes/input.h"
 
 int main()
 {
@@ -48,7 +49,7 @@ int main()
           clock_t currentTime = clock();
           double deltaTime = (double) (currentTime - lastTime) / CLOCKS_PER_SEC;
           
-          
+          handleInput(&st);
           
           if(deltaTime < 0.033) // 60 FPS
           {
@@ -58,7 +59,7 @@ int main()
           lastTime = currentTime;
           
           clearSnake(&st);
-          updateSnake(&st, RIGHT, 0, deltaTime);
+          updateSnake(&st, deltaTime);
           renderSnake(&st);
      }
      

@@ -31,7 +31,13 @@ typedef struct
 #define WIDTH 30
 #define FPS 60
 #define SPEED 1 // cells per seconds
+
 #define LEFT -1
 #define RIGHT 1
 #define UP -1
 #define BOTTOM 1
+
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
