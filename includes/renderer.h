@@ -1,9 +1,11 @@
 #include "definition.h"
+#include "state.h"
+
 #pragma once
 
 void renderGameArea();
 void hideCursor();
 void clearScreen();
 void clearGameArea();
-void renderSnake(node *head);
-void clearSnake(node *head);
+void renderSnake(state* st);
+void clearSnake(state* st);

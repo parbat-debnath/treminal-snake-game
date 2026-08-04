@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../includes/definition.h"
 #include "../includes/style.h"
+#include "../includes/state.h"
 
 char demoGrid[10][10];
 char buffer[4096];
@@ -71,39 +72,43 @@ void hideCursor()
      printf("\033[?25l");
 }
 
-void clearSnake(node *head)
+void clearSnake(state *st)
 {
-     if(head == NULL)
+     node* tempNode = st->snake.head;
+     
+     if(tempNode == NULL)
      {
           printf("Snake head is gone!");
           return;
      }
 
-     node* tempNode = head;
-
      while (tempNode != NULL)
      {
-          gotoxy(tempNode->x, tempNode->y);
+          gotoxy((int) tempNode->x, (int) tempNode->y);
+          printf(BG_BLACK);
           putchar(' ');
-
+          putchar(' ');
+          
           tempNode = tempNode->next;
      }
      
+     fflush(stdout);
 }
 
-void renderSnake(node *head)
+void renderSnake(state *st)
 {
-     if(head == NULL)
+
+     node* tempNode = st->snake.head;
+     if(tempNode == NULL)
      {
           printf("Snake head is gone!");
           return;
      }
 
-     node* tempNode = head;
 
      while (tempNode != NULL)
      {
-          gotoxy(tempNode->x, tempNode->y);
+          gotoxy((int) tempNode->x, (int) tempNode->y);
           printf(tempNode->color);
           putchar(tempNode->sym);
           putchar(' ');

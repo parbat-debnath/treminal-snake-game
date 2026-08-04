@@ -3,7 +3,7 @@
 typedef struct node {
      int dx, dy;
      char sym;
-     int x, y;
+     double x, y;
      char* color;
      struct node* next;
 } node;
@@ -30,8 +30,8 @@ typedef struct
 #define HEIGHT 30
 #define WIDTH 30
 #define FPS 60
-#define speed 3 // cells per seconds
+#define SPEED 1 // cells per seconds
 #define LEFT -1
 #define RIGHT 1
-#define TOP -1
+#define UP -1
 #define BOTTOM 1
