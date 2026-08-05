@@ -120,9 +120,9 @@ void setFruitPosition(state* st)
      int target_empty_index = (rand() % empty_cells) + 1;
      int empty_counter = 0;
 
-     for(int i = 1; i <= HEIGHT; i++)
+     for(int i = 1; i < HEIGHT - 1; i++)
      {
-          for(int j = 1; j <= WIDTH; j++)
+          for(int j = 1; j < WIDTH - 1; j++)
           {
                if(!hasNodeAtXY(j, i, st)) // empty
                {
