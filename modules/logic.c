@@ -30,6 +30,13 @@ void updateSnake(state *st, double dt)
           return;
      }
 
+     // collision with body
+
+     if(head->dx == RIGHT && hasNodeAtXY(head->x + 1, head->y, st)) return;
+     if(head->dx == LEFT && hasNodeAtXY(head->x - 1, head->y, st)) return;
+     if(head->dy == UP && hasNodeAtXY(head->x, head->y - 1, st)) return;
+     if(head->dy == BOTTOM && hasNodeAtXY(head->x, head->y + 1, st)) return;
+
      // code for head
      
      if(head->dx == LEFT)
@@ -81,7 +88,7 @@ void updateSnake(state *st, double dt)
           n->y = curr_y;
           n->real_x = curr_real_x;
           n->real_y = curr_real_y;
-          n->sym = ' ';
+          n->sym = '.';
           n->next = head->next;
           head->next = n;
 
@@ -147,7 +154,6 @@ void setFruitPosition(state* st)
                     st->fruit.x = j + BOX_START_X;
                     st->fruit.y = i + BOX_START_Y;
                     st->fruit.score = 10;
-                    st->fruit.color = BG_BRIGHT_CYAN;
 
                     return;
                }

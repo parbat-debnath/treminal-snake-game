@@ -33,13 +33,13 @@ void renderGameArea()
                gotoxy(g.x + j, g.y + i);
                if(i == 0 || j == 0 || i == HEIGHT - 1 || j == WIDTH - 1)
                {
-                    printf(BG_RED);
-                    printf("##");
+                    printf(BG_BRIGHT_WHITE);
+                    printf("  ");
                     printf(STYLE_RESET);
                }
                else
                {
-                    printf(BG_BRIGHT_BLACK);
+                    printf(BG_RGB(33, 33, 33));
                     printf("  ");
                     printf(STYLE_RESET);
                }
@@ -86,7 +86,7 @@ void clearSnake(state *st)
      while (tempNode != NULL)
      {
           gotoxy((int) tempNode->x, (int) tempNode->y);
-          printf(BG_BRIGHT_BLACK);
+          printf(BG_RGB(33, 33, 33));
           putchar(' ');
           putchar(' ');
           printf(STYLE_RESET);
@@ -124,6 +124,10 @@ void renderFruit(state *st)
 {
      gotoxy(st->fruit.x, st->fruit.y);
      printf(st->fruit.color);
-     putchar(' ');
-     putchar(' ');
+     printf(FG_GREEN);
+     putchar('|');
+     printf(FG_WHITE);
+     printf(BG_GREEN);
+     putchar('|');
+     printf(STYLE_RESET);
 }

@@ -21,7 +21,7 @@ int main()
           .real_x = BOX_START_X + WIDTH / 2,
           .y = BOX_START_Y + HEIGHT / 2,
           .real_y = BOX_START_Y + HEIGHT / 2,
-          .sym = ' ',
+          .sym = 'o',
           .dx = RIGHT,
           .dy = 0
      };
@@ -31,7 +31,7 @@ int main()
      fruit f = {
           .x = BOX_START_X + 5,
           .y = BOX_START_Y + 5,
-          .color = BG_CYAN,
+          .color = BG_BRIGHT_GREEN,
           .score = 10
      };
 

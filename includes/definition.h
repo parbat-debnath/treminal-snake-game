@@ -31,7 +31,7 @@ typedef struct
 #define HEIGHT 30
 #define WIDTH 30
 #define FPS 60
-#define SPEED 8 // cells per seconds
+#define SPEED 7 // cells per seconds
 
 #define LEFT -1
 #define RIGHT 1
