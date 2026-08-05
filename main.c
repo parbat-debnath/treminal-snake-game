@@ -64,14 +64,22 @@ int main()
      n1.next = &n2;
      n2.next = &n3;
 
-     
+     fruit f = {
+          .x = BOX_START_X + 5,
+          .y = BOX_START_Y + 5,
+          .color = BG_CYAN,
+          .score = 10
+     };
+
      state st = {
-          .snake = s
+          .snake = s,
+          .fruit = f
      };
 
      clearScreen();
      renderGameArea();
-     
+     renderFruit(&st);
+
      while (true)
      {
           clock_t currentTime = clock();
@@ -88,6 +96,7 @@ int main()
           
           clearSnake(&st);
           updateSnake(&st, deltaTime);
+          renderFruit(&st);
           renderSnake(&st);
      }
      

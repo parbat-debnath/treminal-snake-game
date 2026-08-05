@@ -116,3 +116,11 @@ void renderSnake(state *st)
           tempNode = tempNode->next;
      }
 }
+
+void renderFruit(state *st)
+{
+     gotoxy(st->fruit.x, st->fruit.y);
+     printf(st->fruit.color);
+     putchar(' ');
+     putchar(' ');
+}
