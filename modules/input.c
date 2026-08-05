@@ -14,19 +14,25 @@ void handleInput(state* st)
                {
                case KEY_UP:
                     
+                    if(st->snake.head->dy == BOTTOM) return;
+                    
                     st->snake.head->dy = UP;
                     st->snake.head->dx = 0;
                     
                     break;
-
+                    
                case KEY_DOWN:
+                    
+                    if(st->snake.head->dy == UP) return;
                     
                     st->snake.head->dy = BOTTOM;
                     st->snake.head->dx = 0;
                     
                     break;
-
+                    
                case KEY_LEFT:
+               
+                    if(st->snake.head->dx == RIGHT) return;
                     
                     st->snake.head->dy = 0;
                     st->snake.head->dx = LEFT;
@@ -35,6 +41,8 @@ void handleInput(state* st)
                     
                case KEY_RIGHT:
                     
+                    if(st->snake.head->dx == LEFT) return;
+               
                     st->snake.head->dy = 0;
                     st->snake.head->dx = RIGHT;
                     
