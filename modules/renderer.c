@@ -131,3 +131,49 @@ void renderFruit(state *st)
      putchar('|');
      printf(STYLE_RESET);
 }
+
+void renderScore(state* st)
+{
+     gotoxy(BOX_START_X + WIDTH + 10, BOX_START_Y);
+     printf("SCORE%7d", st->score);
+     gotoxy(BOX_START_X + WIDTH + 10, BOX_START_Y + 2);
+     if(st->heighScore <= st->score)
+     {
+          printf(BG_YELLOW);
+          printf(FG_BLACK);
+          printf("[HIGH SCORE]");
+          printf(STYLE_RESET);
+     }
+}
+
+void displayGameOver(state* st)
+{
+     char* screen[] = {
+          "+--------------------------+",
+          "|         ",
+          "|                          |",
+          "|                          |",
+          "+--------------------------+"
+     };
+
+     printf(BG_RGB(33, 33, 33));
+     
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 5);
+     printf("%s", screen[0]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 4);
+     printf("%s", screen[1]);
+     printf(FG_RED);
+     printf("GAME OVER");
+     printf(STYLE_RESET);
+     printf(BG_RGB(33, 33, 33));
+     printf("        |");
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 3);
+     printf("%s", screen[2]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 2);
+     printf("|   SCORE         %5d    |", st->score);
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 1);
+     printf("%s", screen[3]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2);
+     printf("%s", screen[4]);
+
+}

@@ -37,7 +37,11 @@ int main()
 
      state st = {
           .snake = s,
-          .fruit = f
+          .fruit = f,
+          .heighScore = 0,
+          .score = 0,
+          .isGameOver = false,
+          .isGamePaused = false
      };
 
      clearScreen();
@@ -60,8 +64,15 @@ int main()
           
           clearSnake(&st);
           updateSnake(&st, deltaTime);
+          
+          if(st.isGameOver)
+          {
+               displayGameOver(&st);
+          }
+          
           renderFruit(&st);
           renderSnake(&st);
+          renderScore(&st);
      }
      
 }

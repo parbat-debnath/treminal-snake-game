@@ -13,6 +13,8 @@ static int countNode(node *head);
 
 void updateSnake(state *st, double dt)
 {
+     if(st->isGameOver || st->isGamePaused) return;
+
      node* head = st->snake.head;
 
      double curr_real_x = head->real_x;
@@ -25,17 +27,28 @@ void updateSnake(state *st, double dt)
      if((curr_x >= BOX_START_X + WIDTH - 2 && head->dx == RIGHT) || (curr_x <= BOX_START_X + 1 && head->dx == LEFT)
           || (curr_y >= BOX_START_Y + HEIGHT - 2 && head->dy == BOTTOM) || (curr_y <= BOX_START_Y + 1 && head->dy == UP))
      {
-          // code
-
+          st->isGameOver = true;
           return;
      }
 
      // collision with body
 
-     if(head->dx == RIGHT && hasNodeAtXY(head->x + 1, head->y, st)) return;
-     if(head->dx == LEFT && hasNodeAtXY(head->x - 1, head->y, st)) return;
-     if(head->dy == UP && hasNodeAtXY(head->x, head->y - 1, st)) return;
-     if(head->dy == BOTTOM && hasNodeAtXY(head->x, head->y + 1, st)) return;
+     if(head->dx == RIGHT && hasNodeAtXY(head->x + 1, head->y, st)){
+          st->isGameOver = true;
+          return;
+     }
+     if(head->dx == LEFT && hasNodeAtXY(head->x - 1, head->y, st)){
+          st->isGameOver = true;
+          return;
+     }
+     if(head->dy == UP && hasNodeAtXY(head->x, head->y - 1, st)){
+          st->isGameOver = true;
+          return;
+     }
+     if(head->dy == BOTTOM && hasNodeAtXY(head->x, head->y + 1, st)){
+          st->isGameOver = true;
+          return;
+     }
 
      // code for head
      
