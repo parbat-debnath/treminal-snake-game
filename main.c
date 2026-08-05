@@ -18,24 +18,52 @@ int main()
      node h = {
           .color = BG_BLUE,
           .x = BOX_START_X + WIDTH / 2,
+          .real_x = BOX_START_X + WIDTH / 2,
           .y = BOX_START_Y + HEIGHT / 2,
+          .real_y = BOX_START_Y + HEIGHT / 2,
           .sym = ' ',
           .dx = RIGHT,
           .dy = 0
      };
      
-     node n = {
-          .color = BG_YELLOW,
+     node n1 = {
+          .color = BG_GREEN,
           .x = BOX_START_X + WIDTH / 2 - 1,
+          .real_x = BOX_START_X + WIDTH / 2 - 1,
           .y = BOX_START_Y + HEIGHT / 2,
+          .real_y = BOX_START_Y + HEIGHT / 2,
           .sym = ' ',
           .dx = RIGHT,
           .dy = 0
      };
-     
-     h.next = &n;
+
+     node n2 = {
+          .color = BG_MAGENTA,
+          .x = BOX_START_X + WIDTH / 2 - 2,
+          .real_x = BOX_START_X + WIDTH / 2 - 2,
+          .y = BOX_START_Y + HEIGHT / 2,
+          .real_y = BOX_START_Y + HEIGHT / 2,
+          .sym = ' ',
+          .dx = RIGHT,
+          .dy = 0
+     };
+
+     node n3 = {
+          .color = BG_GREEN,
+          .x = BOX_START_X + WIDTH / 2 - 3,
+          .real_x = BOX_START_X + WIDTH / 2 - 3,
+          .y = BOX_START_Y + HEIGHT / 2,
+          .real_y = BOX_START_Y + HEIGHT / 2,
+          .sym = ' ',
+          .dx = RIGHT,
+          .dy = 0
+     };
      
      s.head = &h;
+     h.next = &n1;
+     n1.next = &n2;
+     n2.next = &n3;
+
      
      state st = {
           .snake = s

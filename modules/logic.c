@@ -5,66 +5,87 @@
 
 void updateSnake(state *st, double dt)
 {
-     
-     node* tempNode = st->snake.head; // head
-     
-     // collision
-     if(tempNode->x - BOX_START_X >= WIDTH - 2 
-          || tempNode->x - BOX_START_X <= 1)
+     node* head = st->snake.head;
+
+     double curr_real_x = head->real_x;
+     double curr_real_y = head->real_y;
+     int curr_x = head->x;
+     int curr_y = head->y;
+
+     // colliison detection
+
+     if((curr_x >= BOX_START_X + WIDTH - 2 && head->dx == RIGHT) || (curr_x <= BOX_START_X + 1 && head->dx == LEFT)
+          || (curr_y >= BOX_START_Y + HEIGHT - 2 && head->dy == BOTTOM) || (curr_y <= BOX_START_Y + 1 && head->dy == UP))
      {
-          // code 
-          printf("Collision");
+          // code
+
           return;
      }
-     if(tempNode->y - BOX_START_Y >= HEIGHT - 2
-          || tempNode->y - BOX_START_Y <= 1)
-     {
-          // code 
-          printf("Collision");
-          return;
-     }
 
-     double next_x = tempNode->x;
-     double next_y = tempNode->y;
-
-     if(tempNode->dx == RIGHT)
+     // code for head
+     
+     if(head->dx == LEFT)
      {
-          tempNode->x = tempNode->x + SPEED * dt;
-     }
-     else if(tempNode->dx == LEFT)
-     {
-          tempNode->x = tempNode->x - SPEED * dt;
-     }
-     else if(tempNode->dy == UP)
-     {
-          tempNode->y = tempNode->y - SPEED * dt;
-     }
-     else if(tempNode->dy == BOTTOM)
-     {
-          tempNode->y = tempNode->y + SPEED * dt;
-     }
-
-     tempNode = tempNode->next;
-
-     while (tempNode != NULL)
-     {    
-          double temp_x = tempNode->x;
-          double temp_y = tempNode->y;
-
-          if(fabs(temp_x - next_x) >= 1)
-          {
-               tempNode->x = next_x;
-          }
-          if (fabs(temp_y - next_y) >= 1)
-          {
-               tempNode->y = next_y;
-          }
+          head->real_x -= SPEED * dt;
           
+          if(fabs((int) head->real_x - head->x) >= 1)
+          {
+               head->x = (int) head->real_x;
+          }
+     }
+     if(head->dx == RIGHT)
+     {
+          head->real_x += SPEED * dt;
           
-          next_x = temp_x;
-          next_y = temp_y;
-
-          tempNode = tempNode->next;
+          if(fabs((int) head->real_x - head->x) >= 1)
+          {
+               head->x = (int) head->real_x;
+          }
+     }
+     if(head->dy == UP)
+     {
+          head->real_y -= SPEED * dt;
+          
+          if(fabs((int) head->real_y - head->y) >= 1)
+          {
+               head->y = (int) head->real_y;
+          }
+     }
+     if(head->dy == BOTTOM)
+     {
+          head->real_y += SPEED * dt;
+          
+          if(fabs((int) head->real_y - head->y) >= 1)
+          {
+               head->y = (int) head->real_y;
+          }
+     }
+     
+     
+     if(curr_x != head->x || curr_y != head->y)
+     {
+          node* tempNode = head->next;
+          
+          while (tempNode != NULL)
+          {
+               double temp_real_x = tempNode->real_x;
+               double temp_real_y = tempNode->real_y;
+               int temp_x = tempNode->x;
+               int temp_y = tempNode->y;
+     
+               tempNode->real_x = curr_real_x;
+               tempNode->real_y = curr_real_y;
+               
+               tempNode->x = curr_x;
+               tempNode->y = curr_y;
+               
+               curr_real_x = temp_real_x;
+               curr_real_y = temp_real_y;
+               curr_x = temp_x;
+               curr_y = temp_y;
+     
+               tempNode = tempNode->next;
+          }
      }
      
 }
