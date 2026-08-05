@@ -34,12 +34,14 @@ void renderGameArea()
                if(i == 0 || j == 0 || i == HEIGHT - 1 || j == WIDTH - 1)
                {
                     printf(BG_RED);
-                    printf("  ");
+                    printf("##");
                     printf(STYLE_RESET);
                }
                else
                {
-                    printf(" ");
+                    printf(BG_BRIGHT_BLACK);
+                    printf("  ");
+                    printf(STYLE_RESET);
                }
           }
 
@@ -84,9 +86,10 @@ void clearSnake(state *st)
      while (tempNode != NULL)
      {
           gotoxy((int) tempNode->x, (int) tempNode->y);
+          printf(BG_BRIGHT_BLACK);
+          putchar(' ');
+          putchar(' ');
           printf(STYLE_RESET);
-          putchar(' ');
-          putchar(' ');
           
           tempNode = tempNode->next;
      }

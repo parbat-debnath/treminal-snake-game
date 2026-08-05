@@ -73,6 +73,19 @@ void updateSnake(state *st, double dt)
      {
           st->score += st->fruit.score;
           setFruitPosition(st);
+
+          node* n = malloc(sizeof(node));
+          
+          n->color = (countNode(st->snake.head) % 2 == 0) ? BG_BLACK : BG_BRIGHT_RED;
+          n->x = curr_x;
+          n->y = curr_y;
+          n->real_x = curr_real_x;
+          n->real_y = curr_real_y;
+          n->sym = ' ';
+          n->next = head->next;
+          head->next = n;
+
+          return;
      }
      
      if(curr_x != head->x || curr_y != head->y)
