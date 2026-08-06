@@ -152,35 +152,43 @@ void renderScore(state* st)
 void displayGameOver(state* st)
 {
      char* screen[] = {
-          " o--------------------------o ",
-          " |        ",
-          " |                          | ",
-          " |                          | ",
-          " o--------------------------o "
+          " o--------------------------------o ",
+          " |                                | ",
+          " |           ",
+          " |                                | ",
+          " |                                | ",
+          " |                                | ",
+          " o--------------------------------o "
      };
 
      printf(BG_BRIGHT_BLACK);
      // BG_RGB(33, 33, 33)
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 5);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 5);
      printf("%s", screen[0]);
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 4);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 4);
      printf("%s", screen[1]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 3);
+     printf("%s", screen[2]);
      printf(BG_BLACK);
      printf(FG_RED);
      printf(" GAME OVER ");
      printf(STYLE_RESET);
      printf(BG_BRIGHT_BLACK);
-     printf("       | ");
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 3);
-     printf("%s", screen[2]);
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 2);
-     printf(" |   SCORE         %5d    | ", st->score);
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 - 1);
-     printf(" |   HIGH SCORE    %5d    | ", st->heighScore);
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2);
+     printf("          | ");
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 2);
      printf("%s", screen[3]);
-     gotoxy(BOX_START_X + WIDTH / 2 - 7, BOX_START_Y + HEIGHT / 2 + 1);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 1);
+     printf(" |      SCORE         %5d       | ", st->score);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2);
+     printf(" |      HIGH SCORE    %5d       | ", st->heighScore);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 1);
      printf("%s", screen[4]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 2);
+     printf(" |   QUIT [%sQ%s%s]     RESTART [%sENTER%s%s] | ", FG_BRIGHT_YELLOW, STYLE_RESET, BG_BRIGHT_BLACK, FG_BRIGHT_YELLOW, STYLE_RESET, BG_BRIGHT_BLACK);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 3);
+     printf("%s", screen[5]);
+     gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 4);
+     printf("%s", screen[6]);
 
      printf(STYLE_RESET);
 }
