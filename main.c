@@ -46,6 +46,7 @@ int main()
 
      clearScreen();
      renderGameArea();
+     renderBanner();
      renderFruit(&st);
 
      while (true)

@@ -192,3 +192,44 @@ void displayGameOver(state* st)
 
      printf(STYLE_RESET);
 }
+
+void renderBanner()
+{
+     int startX = 5, startY = 5;
+     
+     printf(BG_RGB(33, 33, 33));
+     
+     gotoxy(startX, startY);
+     printf("                          ");
+     startY++;
+     gotoxy(startX, startY);
+     printf(FG_BRIGHT_WHITE);
+     printf("                          ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("                          ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("      %s   %s   %s   %s   %s   %s     ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("      %s S %s n %s A %s k %s E %s     ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("      %s   %s   %s   %s   %s   %s     ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("                          ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("     by Parbat Debnath    ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("                          ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("                          ");
+     startY++;
+
+     printf(STYLE_RESET);
+}
