@@ -32,13 +32,13 @@ int main()
           .x = BOX_START_X + 5,
           .y = BOX_START_Y + 5,
           .color = BG_BRIGHT_GREEN,
-          .score = 10
+          .score = 1
      };
 
      state st = {
           .snake = s,
           .fruit = f,
-          .heighScore = 0,
+          .heighScore = 3,
           .score = 0,
           .isGameOver = false,
           .isGamePaused = false
@@ -50,29 +50,34 @@ int main()
 
      while (true)
      {
+
           clock_t currentTime = clock();
           double deltaTime = (double) (currentTime - lastTime) / CLOCKS_PER_SEC;
           
           handleInput(&st);
           
-          if(deltaTime < 0.033) // 60 FPS
+          if(deltaTime < 0.066) // 60 FPS
           {
                continue;
           }
           
           lastTime = currentTime;
           
-          clearSnake(&st);
-          updateSnake(&st, deltaTime);
           
           if(st.isGameOver)
           {
                displayGameOver(&st);
           }
-          
-          renderFruit(&st);
-          renderSnake(&st);
+          else
+          {
+               clearSnake(&st);
+               updateSnake(&st, deltaTime);
+               renderFruit(&st);
+               renderSnake(&st);
+          }
+
           renderScore(&st);
+          
      }
      
 }

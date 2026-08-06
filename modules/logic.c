@@ -13,8 +13,6 @@ static int countNode(node *head);
 
 void updateSnake(state *st, double dt)
 {
-     if(st->isGameOver || st->isGamePaused) return;
-
      node* head = st->snake.head;
 
      double curr_real_x = head->real_x;
@@ -28,25 +26,35 @@ void updateSnake(state *st, double dt)
           || (curr_y >= BOX_START_Y + HEIGHT - 2 && head->dy == BOTTOM) || (curr_y <= BOX_START_Y + 1 && head->dy == UP))
      {
           st->isGameOver = true;
+          if(st->score > st->heighScore) st->heighScore = st->score;
+          st->snake.head->sym = 'x';
           return;
      }
-
+     
      // collision with body
-
+     
      if(head->dx == RIGHT && hasNodeAtXY(head->x + 1, head->y, st)){
           st->isGameOver = true;
+          if(st->score > st->heighScore) st->heighScore = st->score;
+          st->snake.head->sym = 'x';
           return;
      }
      if(head->dx == LEFT && hasNodeAtXY(head->x - 1, head->y, st)){
           st->isGameOver = true;
+          if(st->score > st->heighScore) st->heighScore = st->score;
+          st->snake.head->sym = 'x';
           return;
      }
      if(head->dy == UP && hasNodeAtXY(head->x, head->y - 1, st)){
           st->isGameOver = true;
+          if(st->score > st->heighScore) st->heighScore = st->score;
+          st->snake.head->sym = 'x';
           return;
      }
      if(head->dy == BOTTOM && hasNodeAtXY(head->x, head->y + 1, st)){
           st->isGameOver = true;
+          if(st->score > st->heighScore) st->heighScore = st->score;
+          st->snake.head->sym = 'x';
           return;
      }
 
@@ -96,7 +104,7 @@ void updateSnake(state *st, double dt)
 
           node* n = malloc(sizeof(node));
           
-          n->color = (countNode(st->snake.head) % 2 == 0) ? BG_BLACK : BG_BRIGHT_RED;
+          n->color = (countNode(st->snake.head) % 2 == 0) ? BG_BLACK : BG_RED;
           n->x = curr_x;
           n->y = curr_y;
           n->real_x = curr_real_x;
@@ -166,7 +174,6 @@ void setFruitPosition(state* st)
                {
                     st->fruit.x = j + BOX_START_X;
                     st->fruit.y = i + BOX_START_Y;
-                    st->fruit.score = 10;
 
                     return;
                }
