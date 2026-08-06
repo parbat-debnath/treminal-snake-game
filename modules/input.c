@@ -1,6 +1,9 @@
 #include "../includes/definition.h"
 #include "../includes/state.h"
 #include <conio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 void handleInput(state* st)
 {
@@ -51,6 +54,19 @@ void handleInput(state* st)
                default:
                     break;
                }
+          }
+          else if(toupper(ch) == 'Q')
+          {
+               // code for exit
+               exit(0);
+          }
+          else if(ch == '\r' || ch == 13) // enter
+          {
+               // TODO : code for rerstart
+          }
+          else if(ch == ' ' || ch == 32) // space
+          {
+               // TODO : code for pause 
           }
      }
 }
