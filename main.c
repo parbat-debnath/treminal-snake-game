@@ -25,6 +25,13 @@ int main()
           .dx = RIGHT,
           .dy = 0
      };
+
+     gameArea g = {
+          .height = HEIGHT,
+          .width = WIDTH,
+          .x = BOX_START_X,
+          .y = BOX_START_Y
+     };
      
      s.head = &h;
 
@@ -41,7 +48,8 @@ int main()
           .heighScore = 3,
           .score = 0,
           .isGameOver = false,
-          .isGamePaused = false
+          .isGamePaused = false,
+          .gameArea = g
      };
 
      clearScreen();
@@ -68,6 +76,10 @@ int main()
           if(st.isGameOver)
           {
                displayGameOver(&st);
+          }
+          else if(st.score >= st.gameArea.height * st.gameArea.width * st.fruit.score)
+          {
+               renderVictory();
           }
           else
           {

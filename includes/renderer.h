@@ -13,3 +13,4 @@ void renderFruit(state *st);
 void renderScore(state* st);
 void displayGameOver(state* st);
 void renderBanner();
+void renderVictory();

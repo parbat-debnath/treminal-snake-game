@@ -233,3 +233,44 @@ void renderBanner()
 
      printf(STYLE_RESET);
 }
+
+void renderVictory()
+{
+     int startX = BOX_START_X + WIDTH / 2 - 9, startY = BOX_START_Y + HEIGHT / 2 - 5;
+     
+     printf(BG_RGB(33, 33, 33));
+     
+     gotoxy(startX, startY);
+     printf("                                 ");
+     startY++;
+     gotoxy(startX, startY);
+     printf(FG_BRIGHT_WHITE);
+     printf("                                 ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("                                 ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("        %s   %s   %s   %s   %s   %s   %s   %s        ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("        %s V %s I %s C %s T %s O %s R %s Y %s        ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("        %s   %s   %s   %s   %s   %s   %s   %s        ", BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_BLACK, BG_RED, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("                                 ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("    Played well, or it's a %s%sg&s%s1%si%sT%sch?   ", BG_BRIGHT_RED, FG_BLACK, FG_BRIGHT_WHITE ,BG_GREEN, BG_RGB(33, 33, 33), BG_BLUE, BG_RGB(33, 33, 33));
+     startY++;
+     gotoxy(startX, startY);
+     printf("                                 ");
+     startY++;
+     gotoxy(startX, startY);
+     printf("                                 ");
+     startY++;
+
+     printf(STYLE_RESET);
+}
