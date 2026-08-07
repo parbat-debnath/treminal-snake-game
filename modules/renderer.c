@@ -137,7 +137,7 @@ void renderScore(state* st)
      gotoxy(BOX_START_X + WIDTH + 10, BOX_START_Y);
      printf("SCORE%12d", st->score);
      gotoxy(BOX_START_X + WIDTH + 10, BOX_START_Y + 2);
-     if(st->heighScore <= st->score)
+     if(st->highScore <= st->score)
      {
           printf(BG_YELLOW);
           printf(FG_BLACK);
@@ -145,7 +145,7 @@ void renderScore(state* st)
           printf(STYLE_RESET);
      }
      else{
-          printf("HIGH SCORE%7d", st->heighScore);
+          printf("HIGH SCORE%7d", st->highScore);
      }
 }
 
@@ -180,7 +180,7 @@ void displayGameOver(state* st)
      gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 - 1);
      printf(" |      SCORE         %5d       | ", st->score);
      gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2);
-     printf(" |      HIGH SCORE    %5d       | ", st->heighScore);
+     printf(" |      HIGH SCORE    %5d       | ", st->highScore);
      gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 1);
      printf("%s", screen[4]);
      gotoxy(BOX_START_X + WIDTH / 2 - 9, BOX_START_Y + HEIGHT / 2 + 2);
@@ -273,4 +273,20 @@ void renderVictory()
      startY++;
 
      printf(STYLE_RESET);
+}
+
+void renderInitScreen(state* st)
+{
+     clearScreen();
+     renderGameArea();
+     renderBanner();
+     renderFruit(st);
+}
+
+void render(state* st, double deltaTime)
+{
+     clearSnake(&st);
+     updateSnake(&st, deltaTime);
+     renderFruit(&st);
+     renderSnake(&st);
 }

@@ -26,7 +26,7 @@ void updateSnake(state *st, double dt)
           || (curr_y >= BOX_START_Y + HEIGHT - 2 && head->dy == BOTTOM) || (curr_y <= BOX_START_Y + 1 && head->dy == UP))
      {
           st->isGameOver = true;
-          if(st->score > st->heighScore) st->heighScore = st->score;
+          if(st->score > st->highScore) st->highScore = st->score;
           st->snake.head->sym = 'x';
           return;
      }
@@ -35,25 +35,25 @@ void updateSnake(state *st, double dt)
      
      if(head->dx == RIGHT && hasNodeAtXY(head->x + 1, head->y, st)){
           st->isGameOver = true;
-          if(st->score > st->heighScore) st->heighScore = st->score;
+          if(st->score > st->highScore) st->highScore = st->score;
           st->snake.head->sym = 'x';
           return;
      }
      if(head->dx == LEFT && hasNodeAtXY(head->x - 1, head->y, st)){
           st->isGameOver = true;
-          if(st->score > st->heighScore) st->heighScore = st->score;
+          if(st->score > st->highScore) st->highScore = st->score;
           st->snake.head->sym = 'x';
           return;
      }
      if(head->dy == UP && hasNodeAtXY(head->x, head->y - 1, st)){
           st->isGameOver = true;
-          if(st->score > st->heighScore) st->heighScore = st->score;
+          if(st->score > st->highScore) st->highScore = st->score;
           st->snake.head->sym = 'x';
           return;
      }
      if(head->dy == BOTTOM && hasNodeAtXY(head->x, head->y + 1, st)){
           st->isGameOver = true;
-          if(st->score > st->heighScore) st->heighScore = st->score;
+          if(st->score > st->highScore) st->highScore = st->score;
           st->snake.head->sym = 'x';
           return;
      }
@@ -149,7 +149,7 @@ void setFruitPosition(state* st)
      if(!st) return;
 
      int number_of_nodes = countNode(st->snake.head);
-     int total_cells = HEIGHT * WIDTH;
+     int total_cells = (HEIGHT - 2) * (WIDTH - 2);
      int empty_cells = total_cells - number_of_nodes;
 
      if(empty_cells <= 0)
@@ -165,7 +165,7 @@ void setFruitPosition(state* st)
      {
           for(int j = 1; j < WIDTH - 1; j++)
           {
-               if(!hasNodeAtXY(j, i, st)) // empty
+               if(!hasNodeAtXY(j + BOX_START_X, i + BOX_START_Y, st)) // empty
                {
                     empty_counter++;
                }

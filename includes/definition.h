@@ -12,7 +12,7 @@ typedef struct node {
 typedef struct {
      int x, y;
      char sym;
-     char* color;
+     char color[32];
      int score;
 } fruit;
 

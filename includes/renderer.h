@@ -14,3 +14,5 @@ void renderScore(state* st);
 void displayGameOver(state* st);
 void renderBanner();
 void renderVictory();
+void renderInitScreen(state* st);
+void render(state* st, double deltaTime);

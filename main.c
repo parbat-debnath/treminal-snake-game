@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include "includes/renderer.h"
@@ -12,50 +13,11 @@ int main()
 {
      hideCursor();
      clock_t lastTime = clock();
-
      
-     snake s;
-     node h = {
-          .color = BG_BLACK,
-          .x = BOX_START_X + WIDTH / 2,
-          .real_x = BOX_START_X + WIDTH / 2,
-          .y = BOX_START_Y + HEIGHT / 2,
-          .real_y = BOX_START_Y + HEIGHT / 2,
-          .sym = 'o',
-          .dx = RIGHT,
-          .dy = 0
-     };
-
-     gameArea g = {
-          .height = HEIGHT,
-          .width = WIDTH,
-          .x = BOX_START_X,
-          .y = BOX_START_Y
-     };
-     
-     s.head = &h;
-
-     fruit f = {
-          .x = BOX_START_X + 5,
-          .y = BOX_START_Y + 5,
-          .color = BG_BRIGHT_GREEN,
-          .score = 1
-     };
-
-     state st = {
-          .snake = s,
-          .fruit = f,
-          .heighScore = 3,
-          .score = 0,
-          .isGameOver = false,
-          .isGamePaused = false,
-          .gameArea = g
-     };
-
-     clearScreen();
-     renderGameArea();
-     renderBanner();
-     renderFruit(&st);
+     state st;
+     memset(&st, 0, sizeof(state));
+     startGame(&st);
+     renderInitScreen(&st);
 
      while (true)
      {
@@ -83,10 +45,7 @@ int main()
           }
           else
           {
-               clearSnake(&st);
-               updateSnake(&st, deltaTime);
-               renderFruit(&st);
-               renderSnake(&st);
+               render(&st, deltaTime);
           }
 
           renderScore(&st);

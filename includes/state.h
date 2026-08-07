@@ -5,9 +5,11 @@
 typedef struct
 {
      snake snake;
-     int heighScore, score;
+     int highScore, score;
      fruit fruit;
      gameArea gameArea;
      bool isGameOver;
      bool isGamePaused;
 } state;
+
+void startGame(state* st);
