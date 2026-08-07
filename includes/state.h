@@ -13,3 +13,4 @@ typedef struct
 } state;
 
 void startGame(state* st);
+void restartGame(state* st);

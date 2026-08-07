@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../includes/definition.h"
 #include "../includes/style.h"
+#include "../includes/logic.h"
 #include "../includes/state.h"
 
 char demoGrid[10][10];
@@ -56,16 +57,17 @@ void clearScreen()
 
 void clearGameArea() // dumped idea (not using)
 {
+     printf(BG_RGB(33, 33, 33));
      for (int i = 1; i < g.height - 1; i++)
      {
           for (int j = 1; j < g.width - 1; j++)
           {
                gotoxy(g.x + j, g.y + i);
-               printf(" ");
+               printf("  ");
           }
           
      }
-     
+     printf(STYLE_RESET);
 }
 
 void hideCursor()
@@ -285,8 +287,8 @@ void renderInitScreen(state* st)
 
 void render(state* st, double deltaTime)
 {
-     clearSnake(&st);
-     updateSnake(&st, deltaTime);
-     renderFruit(&st);
-     renderSnake(&st);
+     clearSnake(st);
+     updateSnake(st, deltaTime);
+     renderFruit(st);
+     renderSnake(st);
 }

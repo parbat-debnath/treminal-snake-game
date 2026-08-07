@@ -63,6 +63,7 @@ void handleInput(state* st)
           else if(ch == '\r' || ch == 13) // enter
           {
                // TODO : code for rerstart
+               restartGame(st);
           }
           else if(ch == ' ' || ch == 32) // space
           {
