@@ -55,7 +55,7 @@ void clearScreen()
      printf("\033[2J\033[H");
 }
 
-void clearGameArea() // dumped idea (not using)
+void clearGameArea()
 {
      printf(BG_RGB(33, 33, 33));
      for (int i = 1; i < g.height - 1; i++)
