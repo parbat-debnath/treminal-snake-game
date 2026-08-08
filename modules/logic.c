@@ -6,10 +6,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <string.h>
 
 void setFruitPosition(state* st);
 static bool hasNodeAtXY(int x, int y, state* st);
-static int countNode(node *head);
+int countNode(node *head);
 
 void updateSnake(state *st, double dt)
 {
@@ -104,7 +105,7 @@ void updateSnake(state *st, double dt)
 
           node* n = malloc(sizeof(node));
           
-          n->color = (countNode(st->snake.head) % 2 == 0) ? BG_BLACK : BG_RED;
+          strcpy(n->color, (countNode(st->snake.head) % 2 == 0) ? BG_BLACK : BG_RED);
           n->x = curr_x;
           n->y = curr_y;
           n->real_x = curr_real_x;
@@ -181,7 +182,7 @@ void setFruitPosition(state* st)
      }
 }
 
-static int countNode(node *head)
+int countNode(node *head)
 {
      int count = 0;
      node* tempNode = head;

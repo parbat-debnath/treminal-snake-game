@@ -5,7 +5,7 @@ typedef struct node {
      char sym;
      double real_x, real_y;
      int x, y;
-     char* color;
+     char color[32];
      struct node* next;
 } node;
 

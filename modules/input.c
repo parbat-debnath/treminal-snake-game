@@ -1,5 +1,6 @@
 #include "../includes/definition.h"
 #include "../includes/state.h"
+#include "../includes/storage.h"
 #include <conio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -58,6 +59,7 @@ void handleInput(state* st)
           else if(toupper(ch) == 'Q')
           {
                // code for exit
+               save(st);
                exit(0);
           }
           else if(ch == '\r' || ch == 13) // enter

@@ -8,6 +8,7 @@
 #include "includes/style.h"
 #include "includes/logic.h"
 #include "includes/input.h"
+#include "includes/storage.h"
 
 int main()
 {
@@ -16,7 +17,12 @@ int main()
      
      state st;
      memset(&st, 0, sizeof(state));
-     startGame(&st);
+     
+     if(!load(&st))
+     {
+          startGame(&st);
+     }
+
      renderInitScreen(&st);
 
      while (true)
@@ -51,5 +57,7 @@ int main()
           renderScore(&st);
           
      }
-     
+
+     save(&st);
+     return 0;
 }
